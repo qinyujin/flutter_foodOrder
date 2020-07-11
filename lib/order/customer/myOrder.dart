@@ -59,6 +59,12 @@ class MyOrderState extends State<MyOrder>{
     return Flexible(
       child: ListView.separated(
         itemBuilder: (context,index){
+          Future.delayed(Duration(seconds: 10),(){
+            cart.items[index].isExist=true;
+            setState(() {
+
+            });
+          });
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -85,10 +91,12 @@ class MyOrderState extends State<MyOrder>{
                         ),
                         //如果使用FlatButton，必须初始化onPressed这个方法
                         onPressed: () {
-                          cart.items[index].isExist=true;
-                          setState(() {
+                         Future.delayed(Duration(seconds: 1),(){
+                           cart.items[index].isExist=true;
+                           setState(() {
 
-                          });
+                           });
+                         });
                         },
                         child: Text(
                           '催',
